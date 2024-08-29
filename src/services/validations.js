@@ -1,4 +1,15 @@
-// TODO: Refactor validation function to follow the defined validations rules
-const isValid = () => Math.random() >= 0.5;
+// validations.js
+function isValid(year) {
+	if (year % 400 === 0) {
+		return true;
+	}
+	if (year % 100 === 0) {
+		return false;
+	}
+	if (year % 4 === 0) {
+		return true;
+	}
+	return false;
+}
 
-exports.isValid = isValid;
+module.exports = { isValid };
