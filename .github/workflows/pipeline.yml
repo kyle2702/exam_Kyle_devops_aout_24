@@ -15,6 +15,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Clean up Git config
+        run: |
+          git config --global --unset-all http.https://github.com/.extraheader || true
+
       # Étape 2 : Installer les dépendances (par exemple, pour un projet Node.js)
       - name: Install dependencies
         run: |
@@ -23,7 +27,8 @@ jobs:
       # Étape 3 : Vérification du formatage du code (par exemple, avec Prettier)
       - name: Check code formatting
         run: |
-          npm run format:check
+          npm run prettier
+
 
       # Étape 4 : Lancer les linters pour vérifier la qualité du code (par exemple, avec ESLint)
       - name: Lint code
